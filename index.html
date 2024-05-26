@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D.</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="./css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  
+  <style>
+    .achivement{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  position: relative; 
+}
+.container1 {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffff;
+}
+.testimonial {
+  position: relative;
+  max-width: 900px;
+  width: 100%;
+  padding: 50px 0;
+  overflow: hidden;
+}
+.testimonial .image {
+  height: 170px;
+  width: 170px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.testimonial .slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 30px;
+  height: 100%;
+  width: 100%;
+}
+.slide p {
+  text-align: center;
+  padding: 0 160px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
+}
+.slide .quote-icon {
+  font-size: 30px;
+  color: #4070f4;
+}
+.slide .details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.details .name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+.details .job {
+  font-size: 12px;
+  font-weight: 400;
+  color: #333;
+}
+.nav-btn {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  transform: translateY(30px);
+  background-color: #7b8ab4;
+  transition: 0.2s;
+}
+.nav-btn:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.nav-btn::after,
+.nav-btn::before {
+  font-size: 20px;
+  color: #fff;
+}
+.swiper-pagination-bullet {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.swiper-pagination-bullet-active {
+  background-color: #4070f4;
+}
+@media screen and (max-width: 768px) {
+  .slide p {
+    padding: 0 20px;
+  }
+  .nav-btn {
+    display: none;
+  }
+}
+
+    .circle {
+      height: 24px;
+      width: 24px;
+      border-radius: 24px;
+      background-color: black;
+      position: fixed; 
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 99999999;
+    }
+    #tfi{
+      margin-right: 25px;
+    }
+    .modal.active, #overlay.active {
+      display: block;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 1em;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      width: 600px;
+      height: 500px;
+    }
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 999;
+    }
+    .modal-body img{
+      width: 500px;
+      height: 450px;
+    }
+    
+    .contact{
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: #f2f2f2;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins',sans-serif;
+}
+.contact::before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  background: #FF676D;
+  clip-path: inset(47% 0 0 0);
+  z-index: -1;
+  height: 100%;
+}
+.contact h2 {
+  font-size: 36px;
+  margin-bottom: 20px;text-align: center;
+  align-self: flex-start;
+  position: absolute;
+  
+  top: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+
+::selection{
+  background:    #FF676D;
+  color: #fff;
+}
+.container{
+  max-width: 950px;
+  width: 100%;
+  overflow: hidden;
+  padding: 80px 0;
+}
+.container .main-card{
+  display: flex;
+  justify-content: space-evenly;
+  width: 200%;
+  transition: 1s;
+}
+#two:checked ~ .main-card{
+  margin-left: -100%;
+}
+.container .main-card .cards{
+  width: calc(100% / 2 - 10px);
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 20px;
+  justify-content: space-between;
+}
+.main-card .cards .card{
+  width: calc(100% / 3 - 10px);
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.4s ease;
+}
+.main-card .cards .card:hover{
+  transform: translateY(-15px);
+}
+.cards .card .content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.cards .card .content .img{
+  height: 130px;
+  width: 130px;
+  border-radius: 50%;
+  padding: 3px;
+  background: #ffffff;
+  margin-bottom: 14px;
+}
+.card .content .img img{
+  height: 100%;
+  width: 100%;
+  border: 3px solid #ffff;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.card .content .name{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+
+
+ .container .button1{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+.button1 label{
+  height: 15px;
+  width: 15px;
+  border-radius: 20px;
+  background: #7b8ab4;
+  margin: 0 4px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.button1 label.active{
+  width: 35px;
+}
+#one:checked ~ .button1 .one{
+  width: 35px;
+}
+#one:checked ~ .button1 .two{
+  width: 15px;
+}
+#two:checked ~ .button1 .one{
+  width: 15px;
+}
+#two:checked ~ .button1 .two{
+  width: 35px;
+}
+input[type="radio"]{
+  display: none;
+}
+@media (max-width: 768px) {
+  .main-card .cards .card{
+    margin: 20px 0 10px 0;
+    width: calc(100% / 2 - 10px);
+  }
+}
+@media (max-width: 600px) {
+  .main-card .cards .card{
+    
+    width: 100%;
+  }
+}
+.h2{
+  position: absolute; 
+  top: 75px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  font-size: 36px;  
+  color: #333;
+
+}
+@media (max-width: 970px) {
+      .portfolio-grid {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .portfolio-item {
+        margin-bottom: 20px;
+      }
+    }
+    
+
+
+.footerOne {
+  width: 100%;
+  display: inline-block;
+  background: #333;
+  height: 50vh;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.footer-distributed{
+  background: #666;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  font: bold 16px sans-serif;
+  padding: 55px 50px;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.footer-distributed .footer-left{
+  width: 40%;
+}
+/* footer logo */
+
+.footer-distributed h3{
+  color:  #ffffff;
+  font: normal 36px 'Open Sans', cursive;
+  margin: 0;
+}
+
+.footer-distributed h3 span{
+  color:  #ffe400;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links{
+  color:  #ffffff;
+  margin: 20px 0 12px;
+  padding: 0;
+}
+
+.footer-distributed .footer-links a{
+  display:inline-block;
+  line-height: 1.8;
+  font-weight:400;
+  text-decoration: none;
+  color:  inherit;
+}
+
+.footer-distributed .footer-company-name{
+  color:  #222;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center{
+  width: 35%;
+}
+
+.footer-distributed .footer-center i{
+  background-color:  #33383b;
+  color: #ffffff;
+  font-size: 25px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42px;
+  margin: 10px 15px;
+  vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope{
+  font-size: 17px;
+  line-height: 38px;
+}
+
+.footer-distributed .footer-center p{
+  display: inline-block;
+  color: #ffffff;
+  font-weight:400;
+  vertical-align: middle;
+  margin:0;
+}
+
+.footer-distributed .footer-center p span{
+  display:block;
+  font-weight: normal;
+  font-size:14px;
+  line-height:2;
+}
+
+.footer-distributed .footer-center p a{
+  color:  #ffe400;
+  text-decoration: none;;
+}
+
+.footer-distributed .footer-links a:before {
+  content: "|";
+  font-weight:300;
+  font-size: 20px;
+  left: 0;
+  color: #fff;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.footer-distributed .footer-links .link-1:before {
+  content: none;
+}
+
+/* Footer Right */
+
+.footer-distributed .footer-right{
+  width: 20%;
+}
+
+.footer-distributed .footer-company-about{
+  line-height: 20px;
+  color:  #92999f;
+  font-size: 13px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer-distributed .footer-company-about span{
+  display: block;
+  color:  #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons{
+  margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a{
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color:  #33383b;
+  border-radius: 2px;
+
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 880px) {
+
+  .footer-distributed{
+    font: bold 14px sans-serif;
+  }
+
+  .footer-distributed .footer-left,
+  .footer-distributed .footer-center,
+  .footer-distributed .footer-right{
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .footer-distributed .footer-center i{
+    margin-left: 0;
+  }
+
+}
+.g70mblink{
+  color: white;
+  text-decoration: none;
+}
+  </style>
+  
+
+  <link rel="stylesheet" href="./css/swiper-bundle.min.css" />
+
+  <link
+    href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+  
+</head>
+<body>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <div class="circle"></div>
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="#">D.</a>
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Skills</a>
+        <a href="#Achievement">Achievement</a>
+      </div>
+      <div class="burger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </nav>
+  </header>
+<!-- hero content -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>I'm <span class="autoType"></span></span></h1>
+      <p>I am a versatile professional skilled in content creation, business and data analysis, development, and Power BI, transforming data into compelling, actionable insights.</p>
+      <a id="download-link" href="./assets/Resume.pdf" download="DHANUSH-( Analyst) Resume.pdf" style="display: none;">Download</a>
+      <button type="button" onclick="triggerDownload()">Download CV</button>
+    </div>
+    <div class="stars">
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+      <div class="star"></div>
+    </div>
+    <div class="image">
+      </div>
+  </section>
+<!-- about section  -->
+  <section class="about" id="about"> 
+    <h2>About Me</h2>
+    <div class="about-content">
+      <div class="about-text">
+        <p>Welcome! I am a multifaceted professional professional with a wide range of skills.
+           These include being content creator, business analyst, data analyst, and developer. 
+           As a person with broad understanding of Power BI, I am able to make a complex data simple and actionable. 
+           In addition, I have a vast knowledge of content creation to narrate compelling stories that will grab the audience’s attention and will have a great foundation of quantitative analysis. 
+           I am also knowledgeable in development of various solutions and technologies and able to do it due to exceptional technical skills.
+        </p>
+      </div>
+      <div class="about-image">
+        <img src="./assets/profile-pic.png" alt="About Me">
+      </div>
+    </div>
+  </section>
+<!-- portfolio section -->
+  <section class="portfolio" id="portfolio">
+    <h2>Portfolio Gallery</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-item" id="gridone" data-image-src="./assets/Python_Certification.jpg">
+        <img src="./assets/Python_Certification.jpg" alt="Portfolio Item 1">
+        <div class="portfolio-overlay">
+          <h3>Great Learning</h3>
+          <a data-modal-target="#modal" >View Details</a>
+        </div>
+      </div>
+      <div class="portfolio-item" id="gridtwo" data-image-src="./assets/da accenture_page-0001.jpg">
+        <img src="./assets/da accenture_page-0001.jpg" alt="Portfolio Item 2">
+        <div class="portfolio-overlay">
+          <h3>Accenture</h3>
+          <a data-modal-target="#modal" >View Details</a>
+        </div>
+      </div>
+      
+      <div class="portfolio-item" id="gridthree" data-image-src="./assets/da 360 DigiTMG_page-0001.jpg">
+        <img src="./assets/da 360 DigiTMG_page-0001.jpg" alt="Portfolio Item 1">
+        <div class="portfolio-overlay">
+          <h3>360 DigiTMG</h3>
+          <a data-modal-target="#modal" >View Details</a>
+        </div>
+      </div>
+      <div class="portfolio-item" id="gridfour" data-image-src="./assets/da Kpmg_page-0001.jpg">
+        <img src="./assets/da Kpmg_page-0001.jpg" alt="Portfolio Item 2">
+        <div class="portfolio-overlay">
+          <h3>Forage</h3>
+          <a data-modal-target="#modal" >View Details</a>
+        </div>
+      </div>
+      
+      <div class="portfolio-item" id="gridfive" data-image-src="./assets/Bussiness analysis Coursera certificaation_page-0001.jpg">
+        <img src="./assets/Bussiness analysis Coursera certificaation_page-0001.jpg" alt="Portfolio Item 2">
+        <div class="portfolio-overlay">
+          <h3>Coursera</h3>
+          <a data-modal-target="#modal" >View Details</a>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div class="title">Certificate</div>
+      <button data-close-button class="close-button">&times;</button>
+    </div>
+    <div class="modal-body">
+      <img  src="./assets/Bussiness analysis Coursera certificaation_page-0001.jpg" alt="">
+      </div>
+  </div>
+  <div id="overlay"></div>
+  
+<!-- contact section  -->
+
+  <section class="contact" id="contact">
+    <h2>Skills</h2>
+    <div class="container">
+      <input type="radio" name="dot" id="one">
+      <input type="radio" name="dot" id="two">
+      <div class="main-card">
+        <div class="cards">
+          <div class="card">
+           <div class="content">
+             <div class="img">
+              <img src="./assets/conntentCreation.png" alt="">
+             </div>
+             <div class="details">
+               <div class="name">Content Creation</div>
+             </div>
+             
+           </div>
+          </div>
+          <div class="card">
+           <div class="content">
+             <div class="img">
+              <img src="./assets/digial marketing.jpg" alt="">
+             </div>
+             <div class="details">
+               <div class="name">Digital Marketing</div>
+             </div>
+             
+           </div>
+          </div>
+          <div class="card">
+           <div class="content">
+             <div class="img">
+              <img src="./assets/data analyst.jpg" alt="">
+             </div>
+             <div class="details">
+               <div class="name">Data Analyst</div>
+             </div>
+             
+           </div>
+          </div>
+        </div>
+        <div class="cards">
+          <div class="card">
+           <div class="content">
+             <div class="img">
+               <img src="./assets/power bi.png" alt="">
+             </div>
+             <div class="details">
+               <div class="name">Power Bi</div>
+             </div>
+             
+           </div>
+          </div>
+          <div class="card">
+           <div class="content">
+             <div class="img">
+               -<img src="./assets/business analyst.jpg" alt="">
+             </div>
+             <div class="details">
+               <div class="name">Business Analyst</div>
+             </div>
+             
+           </div>
+          </div>
+          <div class="card">
+           <div class="content">
+             <div class="img">
+               <img src="./assets/python.jpg" alt="">
+             </div>
+             <div class="details">
+               <div class="name">Python</div>
+             </div>
+             
+           </div>
+          </div>
+        </div>
+      </div>
+      <div class="button1">
+        <label for="one" class=" active one"></label>
+        <label for="two" class="two"></label>
+      </div>
+    </div>
+
+  </section>
+  <!-- Achivement --------------------------------------------------------------------------- -->
+  <section class="achivement" id="Achievement">
+    <h2 class="h2">Achievements</h2>
+    <section class="container1">
+      <div class="testimonial mySwiper">
+        <div class="testi-content swiper-wrapper">
+          <div class="slide swiper-slide">
+            <img src="./assets/power bi image.png" alt="" class="image" />
+            <p>
+              <a href="https://learn.microsoft.com/api/achievements/share/en-us/PadarthiDhanushbabu-6270/3XSF783H?sharingId=A2AD3B94994371B0">
+                Power BI Desktop
+              </a>
+            </p>
+
+            <i class="bx bxs-quote-alt-left quote-icon"></i>
+
+            <div class="details">
+              <span class="name">Microsoft</span>
+              <span class="job">Badge</span>
+            </div>
+          </div>
+          <div class="slide swiper-slide">
+            <img src="./assets/power automate.png" alt="" class="image" />
+            <p>
+              <a href="https://learn.microsoft.com/api/achievements/share/en-us/PadarthiDhanushbabu-6270/UFTNAGL3?sharingId=A2AD3B94994371B0">
+                Microsoft Power Automate
+              </a>
+            </p>
+
+            <i class="bx bxs-quote-alt-left quote-icon"></i>
+
+            <div class="details">
+              <span class="name">Microsoft</span>
+              <span class="job">Badge</span>
+            </div>
+          </div>
+          <div class="slide swiper-slide">
+            <img src="./assets/powe bi not desktop.png" alt="" class="image" />
+            <p>
+              <a href="https://learn.microsoft.com/api/achievements/share/en-us/PadarthiDhanushbabu-6270/EJRD545P?sharingId=A2AD3B94994371B0">
+                Power BI
+              </a>
+            </p>
+
+            <i class="bx bxs-quote-alt-left quote-icon"></i>
+
+            <div class="details">
+              <span class="name">Microsoft</span>
+              <span class="job">Badge</span>
+            </div>
+          </div>
+          <div class="slide swiper-slide">
+            <img src="./assets/data analysis images.png" alt="" class="image" />
+            <p>
+              <a href="https://learn.microsoft.com/api/achievements/share/en-us/PadarthiDhanushbabu-6270/FZC7ZEAX?sharingId=A2AD3B94994371B0">
+                Data Analysis
+              </a>
+            </p>
+
+            <i class="bx bxs-quote-alt-left quote-icon"></i>
+
+            <div class="details">
+              <span class="name">Microsoft</span>
+              <span class="job">Badge</span>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-next nav-btn"></div>
+        <div class="swiper-button-prev nav-btn"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </section>
+
+  </section>
+  <!-- footer ------------------------------------------------------------------------------------------- -->
+<footer class="footer-distributed">
+
+      <div class="footer-left">
+
+        <h3><span>D.</span></h3>
+
+        <p class="footer-links">
+          <a href="#" class="link-1">Home</a>
+          
+          <a href="#about">About</a>
+        
+          <a href="#portfolio">Portfolio</a>
+        
+          <a href="#contact">Skills</a>
+          
+          <a href="#Achievement">achivement</a>
+        </p>
+
+        <p class="footer-company-name"><a class="g70mblink" href="https://github.com/G70MB">G70MB © 2024</a></p>
+      </div>
+
+      <div class="footer-center">
+
+        <div>
+          <i class="fa fa-map-marker"></i>
+          <p><span>Kavali</span>Nellore Dist, Andhra Pradesh</p>
+        </div>
+
+        <div>
+          <i class="fa fa-phone"></i>
+          <p>+91 630789779</p>
+        </div>
+
+        <div>
+          <i class="fa fa-envelope"></i>
+          <p><a href="mailto:dhanushpadarthi0205@gmail.com">dhanushpadarthi0205@gmail.com</a></p>
+        </div>
+
+      </div>
+
+      <div class="footer-right">
+
+        <p class="footer-company-about">
+          <span>About</span>
+          A versatile professional skilled in content creation, business and data analysis, development, and Power BI, transforming data into compelling, actionable insights.
+        </p>
+
+        
+
+      </div>
+
+    </footer>
+    
+  <!-- Js Links ------------------------------------------------------------------------------------------------------- -->
+  <script src="./js/swiper-bundle.min.js"></script>
+  <script src="./js/script1.js"></script>
+  <script src="./js/script.js"></script>
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  
+
+  
+</body>
+</html>
